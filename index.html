@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Meine Sunjun-Website</title>
+    <style>
+        body {
+             font-family: 'Abril Fatface', sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+        }
+		.background-container {
+            background-image: url('https://i.imgur.com/byFbnf8.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            position: absolute;
+            top: 0;
+            left: 0;
+			opacity:0.6;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            color: #000000;
+            font-weight: bold;
+            font-size: 36px;
+            cursor: pointer;
+        }
+
+        #tabs {
+            display: none;
+        }
+
+        .tab-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #image-grid {
+            display: none;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .image-container {
+            width: 20%;
+            margin: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        .image {
+            width: 100%;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .image-text-top {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 19px;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            font-family: 'Abril Fatface', sans-serif;
+        }
+
+        .text-block {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            transform: translate(0, -50%);
+            font-family: 'Abril Fatface', sans-serif;
+        }
+
+        .image-container:hover .image {
+            opacity: 0.5;
+        }
+
+        .image-container:hover .image-text-top {
+            opacity: 1;
+        }
+
+        .image-container:hover .text-block {
+            opacity: 1;
+        }
+
+        /* Toggle switch with three states */
+        .toggle-switch {
+            display: none; /* Initially hide the switch */
+            width: 234px;
+            height: 39px;
+            background-color: #ccc;
+            border-radius: 19.5px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .state-indicator {
+            width: 78px;
+            height: 100%;
+            border-radius: 19.5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            transition: left 0.3s, background-color 0.3s;
+        }
+
+        .state-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .red .state-indicator {
+            left: 0%;
+            background-color: #ff6666;
+        }
+
+        .yellow .state-indicator {
+            left: 33.33%;
+            background-color: #ff0;
+        }
+
+        .sweets .state-indicator {
+            left: 66.66%;
+            background-color: #daa520;
+        }
+      h1, .tab-button, .toggle-switch {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+	<div class="background-container"></div>
+    <h1 onclick="toggleTabs()">Sunjun</h1>
+    <div id="tabs">
+        <button class="tab-button" onclick="showTab('info')">Info</button>
+        <button class="tab-button" onclick="showTab('streetfood')">Street Food</button>
+        <button class="tab-button" onclick="showTab('teamsunjun')">Team Sunjun</button>
+        <button class="tab-button" onclick="showTab('karriere')">Karriere</button>
+    </div>
+    
+    <!-- Three-state switch -->
+    <div class="toggle-switch red" id="myToggle">
+        <div class="state-indicator">
+            <div class="state-text">Main Dishes</div>
+        </div>
+    </div>
+
+    <div id="image-grid">
+        <!-- Initial images for Main Dishes -->
+        <div class="image-container" id="image1">
+            <img class="image" src="https://i.imgur.com/8g7Zhdj.jpg" alt="Bild 1">
+            <p class="image-text-top">Pad Kra Pao Gai</p>
+            <div class="text-block">
+                <p>
+                    Hühnerbrustfilet<br>
+                    Bohnen<br>
+                    Thai Basil<br>
+                    Holy Basil<br>
+                    Chili Rot<br>
+                    Knoblauch<br>
+                    Chiliflocken<br>
+                    Oyster Sauce<br>
+                    Fischsoße<br>
+                    Dark Soy Sauce<br>
+                    Light Soy Sauce<br>
+                    Hühnerfond<br>
+                    Palmsugar<br>
+                    Rapsöl
+                </p>
+            </div>
+        </div>
+        <div class="image-container" id="image2">
+            <img class="image" src="https://i.imgur.com/qQ1UzYa.jpg" alt="Bild 2">
+            <p class="image-text-top">Fried Rice</p>
+            <div class="text-block">
+                <p>
+                    Garnelen<br>
+					Chilipulver<br>
+					Eier<br>
+					Reis<br>
+					Limette<br>
+					Spinat<br>
+					Knoblauch<br>
+					Chiliflocken<br>
+					Frühlingszwiebeln<br>
+					Schalotten<br>
+					Oyster Sauce<br>
+					Light Soy Sauce<br>
+					Rapsöl<br>
+					Zucker weiß<br>
+					Hühnerfond<br>
+                </p>
+            </div>
+        </div>
+        <div class="image-container" id="image3">
+            <img class="image" src="https://i.imgur.com/QpgGbR4.jpg" alt="Bild 3">
+            <p class="image-text-top">Larb Gai</p>
+            <div class="text-block">
+                <p>
+                    Hühnerbrustfilet<br>
+					langer Koriander<br>
+					Limette<br>
+					Schalotten<br>
+					Frühlingszwiebeln<br>
+					Minze<br>
+					Chiliflocken<br>
+					Fischsoße<br>
+					Kaffir Lime Leaves<br>
+					Sticky Rice<br>
+					Chilipulver<br>
+					Hühnerfond
+                </p>
+            </div>
+        </div>
+
+        <!-- New images to replace initial images when toggle is activated -->
+        <!-- Add a new image container for Pad Thai in Specials -->
+        <div class="image-container yellow" id="additionalImage4" style="display: none;">
+            <img class="image" src="https://i.imgur.com/DA62DKg.jpg" alt="Bild 4">
+            <p class="image-text-top">Pad Thai</p>
+            <div class="text-block">
+                <p>
+                    Informationen für Pad Thai
+                </p>
+            </div>
+        </div>
+
+        <!-- New images for Specials state -->
+        <div class="image-container yellow" id="additionalImage1" style="display: none;">
+            <img class="image" src="https://i.imgur.com/Bp41HS6.jpg" alt="Image 1">
+            <p class="image-text-top">Pad Thai</p>
+            <div class="text-block">
+                <p>
+                    Garnelen<br>
+					Chilipulver<br>
+					Tofu<br>
+					Reisbandnudeln<br>
+					Dried Shrimp<br>
+					Knoblauch<br>
+					Schalotten<br>
+					Gelber Rettich<br>
+					Chiliflocken<br>
+					Erdnüsse<br>
+					Sojasprossen<br>
+					langer Koriander<br>
+					Limette<br>
+					Eier<br>
+					Rapsöl<br>
+					Palmsugar<br>
+					Wasser<br>
+					Fischsoße<br>
+					Tamarind
+                </p>
+            </div>
+        </div>
+        <div class="image-container yellow" id="additionalImage2" style="display: none;">
+            <img class="image" src="https://i.imgur.com/4SUhrGv.jpg" alt="Image 2">
+            <p class="image-text-top">Pan Breakfast</p>
+            <div class="text-block">
+                <p>
+					Schweinehack<br>
+					Moo Yoo<br>
+					Gun Chiang<br>
+					Eier<br>
+					Frühlingszwiebeln<br>
+					Rapsöl<br>
+					Schalotten<br>
+					Knoblauch<br>
+					Chiliflocken<br>
+					Oyster Sauce<br>
+					Fischsoße<br>
+					Hühnerfond<br>
+					Butter<br>
+					weißer Pfeffer<br>
+					Gurke<br>
+					Brötchen 
+                </p>
+            </div>
+        </div>
+        <div class="image-container yellow" id="additionalImage3" style="display: none;">
+            <img class="image" src="https://i.imgur.com/Bp41HS6.jpg" alt="Image 3">
+            <p class="image-text-top">Image 3</p>
+            <div class="text-block">
+                <p>
+                    Informationen für zusätzliches Bild 3
+                </p>
+            </div>
+        </div>
+
+        <!-- New images for Sweets state -->
+        <div class="image-container sweets" id="sweetsImage1" style="display: none;">
+            <img class="image" src="https://i.imgur.com/X33Atck.jpg" alt="Sweets Image 1">
+            <p class="image-text-top">Sticky Pancakes</p>
+            <div class="text-block">
+                <p>
+                    Glutinous Rice Flour<br>
+					Frozen Banane<br>
+					Kokosmilch<br>
+					Kokosraspeln<br>
+					Palmsugar<br>
+					Salz<br>
+					Kokosnussfleisch 
+                </p>
+            </div>
+        </div>
+        <div class="image-container sweets" id="sweetsImage2" style="display: none;">
+            <img class="image" src="https://i.imgur.com/tTZoHUb.jpg" alt="Sweets Image 2">
+            <p class="image-text-top">Mango Sticky Rice</p>
+            <div class="text-block">
+                <p>
+                    Mango<br>
+					Sticky Rice<br>
+					Kokosmilch<br>
+					Zucker<br>
+					Salz
+                </p>
+            </div>
+        </div>
+        <div class="image-container sweets" id="sweetsImage3" style="display: none;">
+            <img class="image" src="https://i.imgur.com/gWHjl6X.jpg" alt="Sweets Image 3">
+            <p class="image-text-top">Fried Banana</p>
+            <div class="text-block">
+                <p>
+                    Reismehl<br>
+					Kochbanane<br>
+					Kokosraspeln<br>
+					Salz<br>
+					Rapsöl<br>
+					Wasser<br>
+					Zucker weiß<br>
+					Backpulver
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+   var tabs = document.getElementById('tabs');
+    var imageGrid = document.getElementById('image-grid');
+    var toggleSwitch = document.getElementById('myToggle');
+    var additionalImages = document.querySelectorAll('.image-container[id^="additionalImage"]');
+    var sweetsImages = document.querySelectorAll('.image-container[id^="sweetsImage"]');
+    var initialImages = document.querySelectorAll('.image-container[id^="image"]');
+	var buttons = document.querySelectorAll('.tab-button');
+    function toggleTabs() {
+        if (tabs.style.display === 'none' || tabs.style.display === '') {
+            tabs.style.display = 'block';
+            buttons.forEach(function (button) {
+                button.style.display = 'inline-block';
+            });
+        } else {
+            tabs.style.display = 'none';
+            buttons.forEach(function (button) {
+                button.style.display = 'none';
+            });
+        }
+    }
+ toggleTabs();
+    function showTab(tabName) {
+        if (tabName === 'streetfood') {
+            imageGrid.style.display = 'flex';
+            toggleSwitch.style.display = 'inline-block';
+            if (toggleSwitch.classList.contains('red')) {
+                additionalImages.forEach(function (image) {
+                    if (image.id.startsWith('additionalImage')) {
+                        image.style.display = 'none';
+                    }
+                });
+                sweetsImages.forEach(function (image) {
+                    image.style.display = 'none';
+                });
+                initialImages.forEach(function (image) {
+                    if (image.id.startsWith('image') && !image.id.startsWith('image4')) {
+                        image.style.display = 'block';
+                    }
+                });
+            }
+        } else if (tabName === 'karriere') {
+            // ... (existing code remains the same) ...
+        } else if (tabName === 'teamsunjun') {
+            // ... (existing code remains the same) ...
+        } else if (tabName === 'info') {
+            // ... (existing code remains the same) ...
+        } else if (tabName === 'specials') {
+            imageGrid.style.display = 'flex';
+            toggleSwitch.style.display = 'inline-block';
+            if (toggleSwitch.classList.contains('red')) {
+                additionalImages.forEach(function (image) {
+                    if (image.id.startsWith('additionalImage') && !image.id.startsWith('additionalImage4')) {
+                        image.style.display = 'none';
+                    }
+                });
+                sweetsImages.forEach(function (image) {
+                    image.style.display = 'none';
+                });
+                initialImages.forEach(function (image) {
+                    if (image.id.startsWith('image') && !image.id.startsWith('image4')) {
+                        image.style.display = 'block';
+                    }
+                });
+            }
+        }
+    }
+
+    toggleTabs(); // Call toggleTabs to hide elements initially
+
+    // Add event listener to toggle switch
+    toggleSwitch.addEventListener('click', function (e) {
+        const clickX = e.clientX - toggleSwitch.getBoundingClientRect().left;
+        const switchWidth = toggleSwitch.clientWidth;
+
+        if (clickX < switchWidth / 3) {
+            toggleState('red');
+        } else if (clickX >= switchWidth / 3 && clickX < (2 * switchWidth) / 3) {
+            toggleState('yellow');
+        } else {
+            toggleState('sweets');
+        }
+    });
+
+    function toggleState(state) {
+        const imageArrays = {
+            'red': ['image1', 'image2', 'image3'],
+            'yellow': ['additionalImage1', 'additionalImage2'],
+            'sweets': ['sweetsImage1', 'sweetsImage2', 'sweetsImage3'],
+        };
+
+        if (state === 'red') {
+            toggleSwitch.classList.remove('yellow', 'sweets');
+            toggleSwitch.classList.add('red');
+            toggleSwitch.querySelector('.state-text').textContent = 'Main Dishes';
+            for (var i = 0; i < imageArrays['red'].length; i++) {
+                document.getElementById(imageArrays['red'][i]).style.display = 'block';
+            }
+            for (var i = 0; i < imageArrays['yellow'].length; i++) {
+                document.getElementById(imageArrays['yellow'][i]).style.display = 'none';
+            }
+            for (var i = 0; i < imageArrays['sweets'].length; i++) {
+                document.getElementById(imageArrays['sweets'][i]).style.display = 'none';
+            }
+        } else if (state === 'yellow') {
+            toggleSwitch.classList.remove('red', 'sweets');
+            toggleSwitch.classList.add('yellow');
+            toggleSwitch.querySelector('.state-text').textContent = 'Specials';
+            for (var i = 0; i < imageArrays['yellow'].length; i++) {
+                document.getElementById(imageArrays['yellow'][i]).style.display = 'block';
+            }
+            for (var i = 0; i < imageArrays['red'].length; i++) {
+                document.getElementById(imageArrays['red'][i]).style.display = 'none';
+            }
+            for (var i = 0; i < imageArrays['sweets'].length; i++) {
+                document.getElementById(imageArrays['sweets'][i]).style.display = 'none';
+            }
+        } else if (state === 'sweets') {
+            toggleSwitch.classList.remove('red', 'yellow');
+            toggleSwitch.classList.add('sweets');
+            toggleSwitch.querySelector('.state-text').textContent = 'Sweets';
+            for (var i = 0; i < imageArrays['sweets'].length; i++) {
+                document.getElementById(imageArrays['sweets'][i]).style.display = 'block';
+            }
+            for (var i = 0; i < imageArrays['red'].length; i++) {
+                document.getElementById(imageArrays['red'][i]).style.display = 'none';
+            }
+            for (var i = 0; i < imageArrays['yellow'].length; i++) {
+                document.getElementById(imageArrays['yellow'][i]).style.display = 'none';
+            }
+        }
+    }
+</script>
+</body>
+</html>
