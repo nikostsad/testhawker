@@ -5,150 +5,294 @@
     <title>Meine Sunjun-Website</title>
     <style>
         body {
-             font-family: 'Abril Fatface', sans-serif;
-            background-color: #ffffff;
-            text-align: center;
-        }
-		.background-container {
-            background-image: url('https://i.imgur.com/byFbnf8.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            position: absolute;
-            top: 0;
-            left: 0;
-			opacity:0.6;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        h1 {
-            color: #000000;
-            font-weight: bold;
-            font-size: 36px;
-            cursor: pointer;
+    font-family: 'Abril Fatface', sans-serif;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.background-container {
+    background-image: url('https://i.imgur.com/byFbnf8.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+h1 {
+    color: #000000;
+    font-weight: bold;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+#tabs {
+    display: none;
+}
+
+.tab-button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#image-grid {
+    display: none;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.image-container {
+    width: 20%;
+    margin: 10px;
+    position: relative;
+    text-align: center;
+    background-color: #ffffff;
+    overflow: hidden;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.hover-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.hover-container button {
+    background-color: #fa6400;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.image-container:hover .hover-container {
+    opacity: 1;
+}
+
+.image-container:hover .image {
+    opacity: 0.8;
+}
+
+.image-container:hover .image-text-top {
+    opacity: 1.0;
+    background-color: transparent;
+}
+
+.image-container:hover .text-block {
+    opacity: 1;
+}
+.image-container img {
+    display: block;
+    height: auto;
+}
+.image {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.image-text-top {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: transparent;
+    padding: 5px;
+    font-family: 'Abril Fatface', sans-serif;
+}
+
+.text-block {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    transform: translate(0, -50%);
+    font-family: 'Abril Fatface', sans-serif;
+}
+
+/* Button-Styling */
+/* CSS */
+.ingredient-button {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+ingredient-button:hover,
+ingredient-button:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+ingredient-button:hover {
+  transform: translateY(-1px);
+}
+
+ingredient-button:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+/* Zeigen Sie den Button bei Hover an */
+.image-container:hover .ingredient-button {
+    opacity: 1;
+}
+
+.image-container:hover .image {
+    opacity: 0.8;
+}
+
+.image-container:hover .image-text-top {
+    opacity: 1.0;
+    background-color: transparent;
+}
+
+.image-container:hover .text-block {
+    opacity: 1;
+}
+
+/* Toggle switch with three states */
+.toggle-switch {
+    display: none;
+    width: 234px;
+    height: 39px;
+    background-color: #ccc;
+    border-radius: 19.5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.state-indicator {
+    width: 78px;
+    height: 100%;
+    border-radius: 19.5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    transition: left 0.3s, background-color 0.3s;
+}
+
+.state-text {
+    flex: 1;
+    text-align: center;
+}
+
+.red .state-indicator {
+    left: 0%;
+    background-color: #ff6666;
+}
+
+.yellow .state-indicator {
+    left: 33.33%;
+    background-color: #ff0;
+}
+
+.sweets .state-indicator {
+    left: 66.66%;
+    background-color: #daa520;
+}
+
+h1,
+.tab-button,
+.toggle-switch {
+    position: relative;
+    z-index: 1;
+}
+.ingredients-list {
+            display: none; /* Standardmäßig ausblenden */
+            list-style: none;
+            padding: 0;
         }
 
-        #tabs {
-            display: none;
-        }
+/* CSS für das Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Hintergrund mit Transparenz für Overlay-Effekt */
+    z-index: 2; /* Höheres z-index als die Bildcontainer, um das Modal über den Bildern zu positionieren */
+}
 
-        .tab-button {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-        }
+.modal-content {
+    position: absolute;
+    top: 50%; /* Zentrieren Sie das Modal vertikal */
+    left: 50%; /* Zentrieren Sie das Modal horizontal */
+    transform: translate(-50%, -50%); /* Zentrieren Sie das Modal in beide Richtungen */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 3; /* Höheres z-index als das Overlay, um das Modal über dem Overlay zu positionieren */
+}
+.modal-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+}
 
-        #image-grid {
-            display: none;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
+/* Style the modal list items */
+.modal-content li {
+    margin-bottom: 5px;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
 
-        .image-container {
-            width: 20%;
-            margin: 10px;
-            position: relative;
-            text-align: center;
-        }
 
-        .image {
-            width: 100%;
-            opacity: 1;
-            transition: opacity 0.3s;
-        }
-
-        .image-text-top {
-            position: absolute;
-            top: 5%;
-            left: 0;
-            right: 0;
-            margin: auto;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 19px;
-            font-weight: bold;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 5px;
-            font-family: 'Abril Fatface', sans-serif;
-        }
-
-        .text-block {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            margin: auto;
-            opacity: 0;
-            transition: opacity 0.3s;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            transform: translate(0, -50%);
-            font-family: 'Abril Fatface', sans-serif;
-        }
-
-        .image-container:hover .image {
-            opacity: 0.5;
-        }
-
-        .image-container:hover .image-text-top {
-            opacity: 1;
-        }
-
-        .image-container:hover .text-block {
-            opacity: 1;
-        }
-
-        /* Toggle switch with three states */
-        .toggle-switch {
-            display: none; /* Initially hide the switch */
-            width: 234px;
-            height: 39px;
-            background-color: #ccc;
-            border-radius: 19.5px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .state-indicator {
-            width: 78px;
-            height: 100%;
-            border-radius: 19.5px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: flex;
-            align-items: center;
-            transition: left 0.3s, background-color 0.3s;
-        }
-
-        .state-text {
-            flex: 1;
-            text-align: center;
-        }
-
-        .red .state-indicator {
-            left: 0%;
-            background-color: #ff6666;
-        }
-
-        .yellow .state-indicator {
-            left: 33.33%;
-            background-color: #ff0;
-        }
-
-        .sweets .state-indicator {
-            left: 66.66%;
-            background-color: #daa520;
-        }
-      h1, .tab-button, .toggle-switch {
-            position: relative;
-            z-index: 1;
-        }
     </style>
 </head>
 <body>
@@ -170,190 +314,224 @@
 
     <div id="image-grid">
         <!-- Initial images for Main Dishes -->
-        <div class="image-container" id="image1">
-            <img class="image" src="https://i.imgur.com/8g7Zhdj.jpg" alt="Bild 1">
-            <p class="image-text-top">Pad Kra Pao Gai</p>
-            <div class="text-block">
-                <p>
-                    Hühnerbrustfilet<br>
-                    Bohnen<br>
-                    Thai Basil<br>
-                    Holy Basil<br>
-                    Chili Rot<br>
-                    Knoblauch<br>
-                    Chiliflocken<br>
-                    Oyster Sauce<br>
-                    Fischsoße<br>
-                    Dark Soy Sauce<br>
-                    Light Soy Sauce<br>
-                    Hühnerfond<br>
-                    Palmsugar<br>
-                    Rapsöl
-                </p>
-            </div>
+         <div class="image-container" id="image1">
+    <img class="image" src="https://i.imgur.com/8g7Zhdj.jpg" alt="Bild 1">
+    <div class="hover-container">
+        <button class="ingredient-button">Zutaten</button>
+    </div>
+    <p class="image-text-top">Pad Kra Pao Gai</p>
+</div>
+	 <div id="ingredients-modal-image1" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Pad Kra Pao Gai</h2>
+            <ul>
+                <li>Hühnerbrustfilet</li>
+                <li>Bohnen</li>
+				<li>Thai Basil</li>
+				<li>Holy Basil</li>
+				<li>Chili Rot</li>
+				<li>Knoblauch</li>
+				<li>Chiliflocken</li>
+				<li>Oyster Sauce</li>
+				<li>Fischsoße</li>
+				<li>Dark Soy Sauce</li>
+				<li>Light Soy Sauce</li>
+				<li> Hühnerfond</li>
+				<li>Palmsugar</li>
+				<li>Rapsöl</li>
+                <!-- Weitere Zutaten hier hinzufügen -->
+            </ul>
         </div>
+    </div>
         <div class="image-container" id="image2">
             <img class="image" src="https://i.imgur.com/qQ1UzYa.jpg" alt="Bild 2">
-            <p class="image-text-top">Fried Rice</p>
-            <div class="text-block">
-                <p>
-                    Garnelen<br>
-					Chilipulver<br>
-					Eier<br>
-					Reis<br>
-					Limette<br>
-					Spinat<br>
-					Knoblauch<br>
-					Chiliflocken<br>
-					Frühlingszwiebeln<br>
-					Schalotten<br>
-					Oyster Sauce<br>
-					Light Soy Sauce<br>
-					Rapsöl<br>
-					Zucker weiß<br>
-					Hühnerfond<br>
-                </p>
-            </div>
+            <div class="hover-container">
+				<button class="ingredient-button">Zutaten</button>
+		</div>
+		<p class="image-text-top">Fried Rice</p>
+</div>
+	 <div id="ingredients-modal-image2" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Fried Rice</h2>
+            <ul>
+               <li>Garnelen</li>
+				<li>Chilipulver</li>
+				<li>Eier</li>
+				<li>Reis</li>
+				<li>Limette</li>
+				<li>Spinat</li>
+				<li>Knoblauch</li>
+				<li>Chiliflocken</li>
+				<li>Frühlingszwiebeln</li>
+				<li>Schalotten</li>
+				<li>Oyster Sauce</li>
+				<li>Light Soy Sauce</li>
+				<li>Rapsöl</li>
+				<li>Zucker weiß</li>
+				<li>Hühnerfond</li>
+            </ul>
+        </div>
         </div>
         <div class="image-container" id="image3">
             <img class="image" src="https://i.imgur.com/QpgGbR4.jpg" alt="Bild 3">
-            <p class="image-text-top">Larb Gai</p>
-            <div class="text-block">
-                <p>
-                    Hühnerbrustfilet<br>
-					langer Koriander<br>
-					Limette<br>
-					Schalotten<br>
-					Frühlingszwiebeln<br>
-					Minze<br>
-					Chiliflocken<br>
-					Fischsoße<br>
-					Kaffir Lime Leaves<br>
-					Sticky Rice<br>
-					Chilipulver<br>
-					Hühnerfond
-                </p>
-            </div>
+             <div class="hover-container">
+        <button class="ingredient-button">Zutaten</button>
+    </div>
+    <p class="image-text-top">Larb Gai</p>
+</div>
+	 <div id="ingredients-modal-image3" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Larb Gai</h2>
+            <ul>
+               <li>Hühnerbrustfilet</li>
+				<li>langer Koriander</li>
+				<li>Limette</li>
+				<li>Schalotten</li>
+				<li>Frühlingszwiebeln</li>
+				<li>Minze</li>
+				<li>Chiliflocken</li>
+				<li>Fischsoße</li>
+				<li>Kaffir Lime Leaves</li>
+				<li>Sticky Rice</li>
+				<li>Chilipulver</li>
+				<li>Hühnerfond</li>
+            </ul>
         </div>
-
-        <!-- New images to replace initial images when toggle is activated -->
-        <!-- Add a new image container for Pad Thai in Specials -->
-        <div class="image-container yellow" id="additionalImage4" style="display: none;">
-            <img class="image" src="https://i.imgur.com/DA62DKg.jpg" alt="Bild 4">
-            <p class="image-text-top">Pad Thai</p>
-            <div class="text-block">
-                <p>
-                    Informationen für Pad Thai
-                </p>
-            </div>
         </div>
 
         <!-- New images for Specials state -->
         <div class="image-container yellow" id="additionalImage1" style="display: none;">
             <img class="image" src="https://i.imgur.com/Bp41HS6.jpg" alt="Image 1">
-            <p class="image-text-top">Pad Thai</p>
-            <div class="text-block">
-                <p>
-                    Garnelen<br>
-					Chilipulver<br>
-					Tofu<br>
-					Reisbandnudeln<br>
-					Dried Shrimp<br>
-					Knoblauch<br>
-					Schalotten<br>
-					Gelber Rettich<br>
-					Chiliflocken<br>
-					Erdnüsse<br>
-					Sojasprossen<br>
-					langer Koriander<br>
-					Limette<br>
-					Eier<br>
-					Rapsöl<br>
-					Palmsugar<br>
-					Wasser<br>
-					Fischsoße<br>
-					Tamarind
-                </p>
-            </div>
+             <div class="hover-container">
+        <button class="ingredient-button">Zutaten</button>
+    </div>
+    <p class="image-text-top">Pad Thai</p>
+</div>
+	 <div id="ingredients-modal-image4" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Pad Thai</h2>
+            <ul>
+                <li>Chilipulver</li>
+				<li>Tofu</li>
+				<li>Reisbandnudeln</li>
+				<li>Dried Shrimp</li>
+				<li>Knoblauch</li>
+				<li>Schalotten</li>
+				<li>Gelber Rettich</li>
+				<li>Chiliflocken</li>
+				<li>Erdnüsse</li>
+				<li>Sojasprossen</li>
+				<li>langer Koriander</li>
+				<li>Eier</li>
+				<li>Rapsöl</li>
+				<li>Palmsugar</li>
+				<li>Wasser</li>
+				<li>Fischsoße</li>
+				<li>Tamarind</li>
+            </ul>
+        </div>
         </div>
         <div class="image-container yellow" id="additionalImage2" style="display: none;">
-            <img class="image" src="https://i.imgur.com/4SUhrGv.jpg" alt="Image 2">
-            <p class="image-text-top">Pan Breakfast</p>
-            <div class="text-block">
-                <p>
-					Schweinehack<br>
-					Moo Yoo<br>
-					Gun Chiang<br>
-					Eier<br>
-					Frühlingszwiebeln<br>
-					Rapsöl<br>
-					Schalotten<br>
-					Knoblauch<br>
-					Chiliflocken<br>
-					Oyster Sauce<br>
-					Fischsoße<br>
-					Hühnerfond<br>
-					Butter<br>
-					weißer Pfeffer<br>
-					Gurke<br>
-					Brötchen 
-                </p>
-            </div>
+            <img class="image" src="https://imgur.com/4AfIr0S.jpg" alt="Image 2">
+             <div class="hover-container">
+        <button class="ingredient-button">Zutaten</button>
+    </div>
+    <p class="image-text-top">Pan Eggs</p>
+</div>
+	 <div id="ingredients-modal-image5" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Pan Eggs</h2>
+            <ul>
+                <li>Schweinehack</li>
+				<li>Moo Yoo</li>
+				<li>Gun Chiang</li>
+				<li>Eier</li>
+				<li>Frühlingszwiebeln</li>
+				<li>Rapsöl</li>
+				<li>Schalotten</li>
+				<li>Knoblauch</li>
+				<li>Chiliflocken</li>
+				<li>Oyster Sauce</li>
+				<li>Fischsoße</li>
+				<li>Hühnerfond</li>
+				<li>Butter</li>
+				<li>weißer Pfeffer</li>
+				<li>Gurke</li>
+				<li>Brötchen </li>
+            </ul>
         </div>
-        <div class="image-container yellow" id="additionalImage3" style="display: none;">
-            <img class="image" src="https://i.imgur.com/Bp41HS6.jpg" alt="Image 3">
-            <p class="image-text-top">Image 3</p>
-            <div class="text-block">
-                <p>
-                    Informationen für zusätzliches Bild 3
-                </p>
-            </div>
         </div>
 
         <!-- New images for Sweets state -->
         <div class="image-container sweets" id="sweetsImage1" style="display: none;">
             <img class="image" src="https://i.imgur.com/X33Atck.jpg" alt="Sweets Image 1">
-            <p class="image-text-top">Sticky Pancakes</p>
-            <div class="text-block">
-                <p>
-                    Glutinous Rice Flour<br>
-					Frozen Banane<br>
-					Kokosmilch<br>
-					Kokosraspeln<br>
-					Palmsugar<br>
-					Salz<br>
-					Kokosnussfleisch 
-                </p>
-            </div>
+            <div class="hover-container">
+        <button class="ingredient-button">Zutaten</button>
+    </div>
+    <p class="image-text-top">Sticky Pancakes</p>
+</div>
+	 <div id="ingredients-modal-image6" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sticky Pancakes</h2>
+            <ul>
+                <li>Glutinous Rice Flour</li>
+				<li>Frozen Banane</li>
+				<li>Kokosmilch</li>
+				<li>Kokosraspeln</li>
+				<li>Palmsugar</li>
+				<li>Salz</li>
+				<li>Kokosnussfleisch </li>
+            </ul>
+        </div>
         </div>
         <div class="image-container sweets" id="sweetsImage2" style="display: none;">
             <img class="image" src="https://i.imgur.com/tTZoHUb.jpg" alt="Sweets Image 2">
-            <p class="image-text-top">Mango Sticky Rice</p>
-            <div class="text-block">
-                <p>
-                    Mango<br>
-					Sticky Rice<br>
-					Kokosmilch<br>
-					Zucker<br>
-					Salz
-                </p>
-            </div>
+            <div class="hover-container">
+        <button class="ingredient-button">Zutaten</button>
+    </div>
+    <p class="image-text-top">Mango Sticky Rice</p>
+</div>
+	 <div id="ingredients-modal-image7" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Mango Sticky Rice</h2>
+            <ul>
+                <li>Mango</li>
+				<li>Sticky Rice</li>
+				<li>Kokosmilch</li>
+				<li>Zucker</li>
+				<li>Salz</li>
+            </ul>
+        </div>
         </div>
         <div class="image-container sweets" id="sweetsImage3" style="display: none;">
             <img class="image" src="https://i.imgur.com/gWHjl6X.jpg" alt="Sweets Image 3">
-            <p class="image-text-top">Fried Banana</p>
-            <div class="text-block">
-                <p>
-                    Reismehl<br>
-					Kochbanane<br>
-					Kokosraspeln<br>
-					Salz<br>
-					Rapsöl<br>
-					Wasser<br>
-					Zucker weiß<br>
-					Backpulver
-                </p>
-            </div>
+            <div class="hover-container">
+        <button class="ingredient-button">Zutaten</button>
+    </div>
+    <p class="image-text-top">Fried Banana</p>
+</div>
+	 <div id="ingredients-modal-image8" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Fried Banana</h2>
+            <ul>
+                <li>Reismehl</li>
+				<li>Kochbanane</li>
+				<li>Kokosraspeln</li>
+				<li>Salz</li>
+				<li>Rapsöl</li>
+				<li>Wasser</li>
+				<li>Zucker weiß</li>
+				<li>Backpulver</li>
+            </ul>
+        </div>
         </div>
     </div>
     
@@ -365,6 +543,7 @@
     var sweetsImages = document.querySelectorAll('.image-container[id^="sweetsImage"]');
     var initialImages = document.querySelectorAll('.image-container[id^="image"]');
 	var buttons = document.querySelectorAll('.tab-button');
+	
     function toggleTabs() {
         if (tabs.style.display === 'none' || tabs.style.display === '') {
             tabs.style.display = 'block';
@@ -489,6 +668,36 @@
             }
         }
     }
+	  var ingredientButtons = document.querySelectorAll('.ingredient-button');
+
+ingredientButtons.forEach(function (button, index) {
+    button.addEventListener("click", function() {
+        var modalId = "ingredients-modal-image" + (index + 1); // Bilder sind 1-basiert
+        var modal = document.getElementById(modalId);
+
+        if (modal) {
+            modal.style.display = "block";
+        }
+    });
+});
+	var closeModalButtons = document.querySelectorAll('.close');
+
+closeModalButtons.forEach(function (button) {
+    button.addEventListener("click", function() {
+        var modal = button.parentElement.parentElement; // Das übergeordnete Element des "X"-Symbols ist der Modal-Container
+        if (modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+window.addEventListener("click", function(event) {
+    // Schließen Sie das Modal, wenn der Benutzer außerhalb des Modal-Bereichs klickt
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+    }
+});	
+    </script>
 </script>
 </body>
 </html>
